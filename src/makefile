@@ -19,6 +19,7 @@ CLASSES = \
 		  $(LOX_SUBDIR)LoxCallable.java \
 		  $(LOX_SUBDIR)LoxFunction.java \
 		  $(LOX_SUBDIR)Parser.java \
+		  $(LOX_SUBDIR)Return.java \
 		  $(LOX_SUBDIR)RuntimeError.java \
 		  $(LOX_SUBDIR)Scanner.java \
 		  $(LOX_SUBDIR)Stmt.java \
