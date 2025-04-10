@@ -17,7 +17,9 @@ CLASSES = \
 		  $(LOX_SUBDIR)Interpreter.java \
           $(LOX_SUBDIR)Lox.java \
 		  $(LOX_SUBDIR)LoxCallable.java \
+		  $(LOX_SUBDIR)LoxClass.java \
 		  $(LOX_SUBDIR)LoxFunction.java \
+		  $(LOX_SUBDIR)LoxInstance.java \
 		  $(LOX_SUBDIR)Parser.java \
 		  $(LOX_SUBDIR)Resolver.java \
 		  $(LOX_SUBDIR)Return.java \
@@ -30,6 +32,10 @@ CLASSES = \
 default: classes
 
 classes: $(CLASSES:.java=.class)
+
+generate_ast:
+	$(JC) $(JFLAGS) $(TOOL_SUBDIR)GenerateAst.java
+	$(JAVA) $(TOOL_SUBDIR)GenerateAst $(LOX_SUBDIR)
 
 clean_lox: 
 	rm $(LOX_SUBDIR)*.class
