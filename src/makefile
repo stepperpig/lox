@@ -1,5 +1,6 @@
 JFLAGS = -g
 JC = javac
+JAVA = java
 LOX_SUBDIR = com/craftinginterpreters/lox/
 TOOL_SUBDIR = com/craftinginterpreters/tool/
 .SUFFIXES: .java .class
@@ -11,10 +12,18 @@ TOOL_SUBDIR = com/craftinginterpreters/tool/
 # If your version of make can't handle the leading tabs on each
 # line, just remove them (these are also just added for readability).
 CLASSES = \
-		TokenType.java \
-		Token.java \
-        Scanner.java \
-        Lox.java 
+		  $(LOX_SUBDIR)Environment.java \
+		  $(LOX_SUBDIR)Expr.java \
+		  $(LOX_SUBDIR)Interpreter.java \
+          $(LOX_SUBDIR)Lox.java \
+		  $(LOX_SUBDIR)LoxCallable.java \
+		  $(LOX_SUBDIR)LoxFunction.java \
+		  $(LOX_SUBDIR)Parser.java \
+		  $(LOX_SUBDIR)RuntimeError.java \
+		  $(LOX_SUBDIR)Scanner.java \
+		  $(LOX_SUBDIR)Stmt.java \
+		  $(LOX_SUBDIR)Token.java \
+		  $(LOX_SUBDIR)TokenType.java \
 
 default: classes
 
@@ -25,3 +34,8 @@ clean_lox:
 
 clean_tool:
 	rm $(TOOL_SUBDIR)*.class
+
+run:
+	$(JAVA) $(LOX_SUBDIR)Lox
+
+clean: clean_lox clean_tool
