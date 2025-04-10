@@ -82,7 +82,7 @@ class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
 		try {
 			this.environment = environment;
 
-			for (Stmt statements : statements) {
+			for (Stmt statement : statements) {
 				execute(statement);
 			}
 		} finally {
@@ -110,7 +110,7 @@ class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
 	}
 
 	@Override
-	public void visitVarStmt(Stmt.Var stmt) {
+	public Void visitVarStmt(Stmt.Var stmt) {
 		Object value = null;
 		if (stmt.initializer != null) {
 			value = evaluate(stmt.initializer);
